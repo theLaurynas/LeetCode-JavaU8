@@ -30,4 +30,22 @@ public class Main {
         }
         return strs[0].substring(0, stopsAt);
     }
+
+    public static String longestCommonPrefix2(String[] strs) {
+        if (strs.length == 0) return "";
+        StringBuilder sb = new StringBuilder();
+        if (strs.length == 1) return strs[0];
+        for (int i = 0; i < strs.length; i++) {
+            for (int k = 0; k < strs[i].length(); k++) {
+                for (int j = i + 1; j < strs.length; j++) {
+                    if (strs[i].length() <= k || strs[j].length() <= k || strs[i].charAt(k) != strs[j].charAt(k)) {
+                        return sb.toString();
+                    }
+                }
+                sb.append(strs[i].charAt(k));
+            }
+            return sb.toString();
+        }
+        return "";
+    }
 }
